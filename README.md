@@ -69,6 +69,16 @@ The application will be available at the local URL shown by Vite, normally:
 http://localhost:5173
 ```
 
+Optional environment configuration:
+
+```bash
+cp .env.example .env
+```
+
+```text
+VITE_AUTH_BASE_URL=https://dummyjson.com/auth
+```
+
 ## Available scripts
 
 ```bash
@@ -82,7 +92,7 @@ npm run preview          # Preview the production build locally
 
 ## Login
 
-The login page uses DummyJSON Auth API:
+The login page uses the configured auth API. By default, it points to DummyJSON:
 
 ```text
 POST https://dummyjson.com/auth/login
@@ -134,6 +144,7 @@ src/
 |   |-- analytics/    # Recharts visualizations and sprint summary
 |   |-- notifications/# Notification polling and notification panel
 |   `-- dashboard/    # Dashboard feature UI
+|-- config/           # Environment-backed runtime configuration
 |-- hooks/            # Shared hooks such as useToast
 |-- data/             # Local mock task data
 |-- lib/              # Shared TanStack Query client
@@ -202,6 +213,7 @@ The board, users, sprints, comments, and initial notifications use `src/data/moc
 The current tests cover:
 
 - Successful login state and token storage.
+- Login form rendering, validation, password visibility, auth errors, and successful navigation.
 - Logout state cleanup.
 - Refreshing an expired access token.
 - Retrying a failed request with the refreshed bearer token.
@@ -210,6 +222,7 @@ The current tests cover:
 - Toast creation and dismissal through `useToast`.
 - Reusable UI components including Button, InputField, Select, Modal, DataTable, Skeleton, and Toast rendering.
 - Task drawer save/close and comment submission behavior.
+- Dashboard section components including metrics, header links, progress, focus, attention, recent updates, and workload rendering.
 
 Run the tests once before submitting changes:
 

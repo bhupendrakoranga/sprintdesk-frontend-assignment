@@ -1,5 +1,6 @@
-import { lazy } from 'react'
+import { Suspense, lazy } from 'react'
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Loader from '../components/ui/Loader'
 import { AuthenticatedRoute, GuestOnlyRoute } from './AuthRouteGuards'
 
 const Login = lazy(() => import('../pages/login/Login'))
@@ -43,10 +44,16 @@ const router = createBrowserRouter([
     element: <Navigate to="/dashboard" replace />,
   },
 ])
-const Router = () => {
-  return (
+const RouteFallback = () => (
+  <div className="flex min-h-dvh items-center justify-center bg-slate-50 text-indigo-600 dark:bg-slate-950 dark:text-indigo-300">
+    <Loader />
+  </div>
+)
+
+const Router = () => (
+  <Suspense fallback={<RouteFallback />}>
     <RouterProvider router={router} />
-  )
-}
+  </Suspense>
+)
 
 export default Router

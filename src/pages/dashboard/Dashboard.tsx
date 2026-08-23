@@ -1,12 +1,7 @@
-import { Suspense } from "react";
 import DashboardPage from "../../features/dashboard/DashboardPage";
 
 const Dashboard = () => {
-  return (
-    <Suspense>
-      <DashboardPage />
-    </Suspense>
-  );
+  return <DashboardPage />;
 };
 
 export default Dashboard;
