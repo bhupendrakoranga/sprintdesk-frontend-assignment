@@ -1,5 +1,12 @@
-import BoardPage from '../../features/board/BoardPage'
+import { Suspense } from "react";
+import BoardPage from "../../features/board/BoardPage";
 
-const Board = () => <BoardPage />
+const Board = () => {
+  return (
+    <Suspense>
+      <BoardPage />
+    </Suspense>
+  );
+};
 
-export default Board
+export default Board;

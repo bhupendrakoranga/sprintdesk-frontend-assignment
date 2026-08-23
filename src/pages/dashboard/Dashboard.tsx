@@ -1,7 +1,12 @@
-import DashboardPage from '../../features/dashboard/DashboardPage'
+import { Suspense } from "react";
+import DashboardPage from "../../features/dashboard/DashboardPage";
 
 const Dashboard = () => {
-  return <DashboardPage />
-}
+  return (
+    <Suspense>
+      <DashboardPage />
+    </Suspense>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

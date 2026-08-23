@@ -1,7 +1,12 @@
-import LoginFrom from "../../features/auth/LoginForm";
+import { Suspense } from "react";
+import LoginForm from "../../features/auth/LoginForm";
 
 const Login = () => {
-  return <LoginFrom />;
+  return (
+    <Suspense>
+      <LoginForm />
+    </Suspense>
+  );
 };
 
 export default Login;
