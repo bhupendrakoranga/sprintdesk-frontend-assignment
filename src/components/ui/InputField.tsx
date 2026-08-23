@@ -4,6 +4,7 @@ export interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: ReactNode
   error?: ReactNode
   helperText?: ReactNode
+  endAdornment?: ReactNode
   containerClassName?: string
   labelClassName?: string
 }
@@ -16,6 +17,7 @@ export default function InputField({
   label,
   error,
   helperText,
+  endAdornment,
   containerClassName,
   labelClassName,
   className,
@@ -33,6 +35,7 @@ export default function InputField({
 
   const inputClassName = [
     inputBaseClassName,
+    endAdornment && 'pr-11',
     error
       ? 'border-red-500 focus:border-red-600 focus:ring-red-600'
       : 'border-gray-300 focus:border-indigo-600 focus:ring-indigo-600',
@@ -49,7 +52,7 @@ export default function InputField({
         </label>
       )}
 
-      <div className={label ? 'mt-2' : undefined}>
+      <div className={`${label ? 'mt-2 ' : ''}${endAdornment ? 'relative' : ''}`.trim() || undefined}>
         <input
           {...inputProps}
           id={inputId}
@@ -57,6 +60,11 @@ export default function InputField({
           aria-describedby={describedBy}
           aria-invalid={error ? true : ariaInvalid}
         />
+        {endAdornment && (
+          <div className="absolute inset-y-0 right-2 flex items-center">
+            {endAdornment}
+          </div>
+        )}
       </div>
 
       {error ? (

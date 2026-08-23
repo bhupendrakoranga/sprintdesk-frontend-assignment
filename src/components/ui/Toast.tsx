@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { CloseIcon } from '../../utils/icons'
 import { useToast, type ToastMessage } from '../../hooks/useToast'
 
 const toneClassNames: Record<ToastMessage['tone'], string> = {
@@ -34,9 +35,7 @@ function ToastItem({ toast }: { toast: ToastMessage }) {
           onClick={() => dismissToast(toast.id)}
           aria-label="Dismiss notification"
         >
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-          </svg>
+          <CloseIcon aria-hidden="true" className="h-4 w-4" />
         </button>
       </div>
     </li>

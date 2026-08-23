@@ -4,6 +4,7 @@ import { useAuthStore } from '../../stores/authStore'
 import { useThemeStore } from '../../stores/themeStore'
 import NotificationBell from '../../features/notifications/components/NotificationBell'
 import { navigationItems } from "./navigation";
+import { CloseIcon, MenuIcon, MoonIcon, SunIcon } from '../../utils/icons'
 
 export default function Header() {
   const navigate = useNavigate()
@@ -38,35 +39,9 @@ export default function Header() {
           }
         >
           {isMobileMenuOpen ? (
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="h-5 w-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18 18 6M6 6l12 12"
-              />
-            </svg>
+            <CloseIcon aria-hidden="true" className="h-5 w-5" />
           ) : (
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="h-5 w-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+            <MenuIcon aria-hidden="true" className="h-5 w-5" />
           )}
         </button>
 
@@ -87,13 +62,9 @@ export default function Header() {
             aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
           >
             {theme === 'light' ? (
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2m0 14v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M3 12h2m14 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
-              </svg>
+              <SunIcon aria-hidden="true" className="h-5 w-5" />
             ) : (
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.5 6.5 0 0 0 21 12.8Z" />
-              </svg>
+              <MoonIcon aria-hidden="true" className="h-5 w-5" />
             )}
           </button>
           <NotificationBell />

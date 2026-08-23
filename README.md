@@ -120,54 +120,6 @@ An internet connection is required when logging in or restoring a session.
 | `/analytics` | Protected | Sprint charts and data visualization |
 | `/` | Redirect | Redirects to `/dashboard` |
 
-## Reusable components
-
-### Button
-
-`src/components/ui/Button.tsx` supports variants, sizes, full-width layout, disabled state, and loading state.
-
-```tsx
-<Button type="submit" fullWidth isLoading={isSubmitting}>
-  Sign in
-</Button>
-```
-
-### InputField
-
-`src/components/ui/InputField.tsx` supports labels, errors, helper text, native input attributes, generated IDs, and accessible error descriptions.
-
-```tsx
-<InputField
-  id="username"
-  name="username"
-  label="Username"
-  value={values.username}
-  onChange={handleChange}
-  error={errors.username && touched.username ? errors.username : null}
-  autoComplete="username"
-/>
-```
-
-### Toast
-
-`src/hooks/useToast.ts` manages toast state, and `src/components/ui/Toast.tsx` renders the live toast viewport.
-
-```tsx
-const showToast = useToast((state) => state.showToast)
-
-showToast({
-  title: 'New notification',
-  message: 'Open the notification panel to review the latest activity.',
-})
-```
-
-### Loader
-
-`src/components/ui/Loader.tsx` is the shared wrapper around `FadeLoader` from `react-spinners`.
-
-```tsx
-<Loader color="#4f46e5" height={10} width={4} />
-```
 
 ## Project structure
 

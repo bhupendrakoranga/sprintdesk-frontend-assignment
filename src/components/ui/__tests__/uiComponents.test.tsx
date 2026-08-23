@@ -28,13 +28,21 @@ describe('ui components', () => {
   })
 
   it('links input labels and validation errors accessibly', () => {
-    render(<InputField id="username" label="Username" error="Username is required" />)
+    render(
+      <InputField
+        id="username"
+        label="Username"
+        error="Username is required"
+        endAdornment={<button type="button">Clear</button>}
+      />,
+    )
 
     const input = screen.getByLabelText('Username')
 
     expect(input).toHaveAttribute('aria-invalid', 'true')
     expect(input).toHaveAccessibleDescription('Username is required')
     expect(screen.getByRole('alert')).toHaveTextContent('Username is required')
+    expect(screen.getByRole('button', { name: 'Clear' })).toBeInTheDocument()
   })
 
   it('renders select options with the selected value', () => {

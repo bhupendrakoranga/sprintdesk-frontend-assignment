@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react'
+import { BellIcon } from '../../../utils/icons'
 import Button from '../../../components/ui/Button'
 import Loader from '../../../components/ui/Loader'
 import { useToast } from '../../../hooks/useToast'
@@ -41,9 +42,7 @@ export default function NotificationBell() {
         aria-expanded={isOpen}
         aria-controls="notification-panel"
       >
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15 17H9m10-2V11a7 7 0 1 0-14 0v4l-2 2h18l-2-2Zm-7 5h2" />
-        </svg>
+        <BellIcon aria-hidden="true" className="h-5 w-5" />
         {unreadCount > 0 && <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-600 px-1 text-[10px] font-bold text-white">{unreadCount > 99 ? '99+' : unreadCount}</span>}
       </button>
 

@@ -7,11 +7,13 @@ import { loginSchema } from "../../utils/validationSchema";
 import { useAuthStore } from '../../stores/authStore'
 import type { LoginCredentials } from '../../types/global'
 import AuthLayout from "../../components/layout/AuthLayout";
+import { EyeIcon, EyeOffIcon } from "../../utils/icons";
 
 const LoginForm = () => {
   const navigate = useNavigate()
   const loginUser = useAuthStore((state) => state.login)
   const [loginError, setLoginError] = useState<string | null>(null)
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
   const initialValues: LoginCredentials = {
     username: "",
@@ -83,13 +85,28 @@ const LoginForm = () => {
                         if (loginError) setLoginError(null)
                         handleChange(event)
                       }}
-                      type="password"
+                      type={isPasswordVisible ? 'text' : 'password'}
                       label="Password"
                       error={
                         errors.password && touched.password ? errors.password : null
                       }
                       autoComplete="current-password"
                       className="min-h-11 rounded-lg"
+                      endAdornment={
+                        <button
+                          type="button"
+                          className="inline-flex h-8 w-8 items-center justify-center rounded-md text-slate-500 hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
+                          onClick={() => setIsPasswordVisible((isVisible) => !isVisible)}
+                          aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
+                          aria-pressed={isPasswordVisible}
+                        >
+                          {isPasswordVisible ? (
+                            <EyeOffIcon aria-hidden="true" className="h-5 w-5" />
+                          ) : (
+                            <EyeIcon aria-hidden="true" className="h-5 w-5" />
+                          )}
+                        </button>
+                      }
                     />
 
                     <Button type="submit" size="lg" fullWidth isLoading={isSubmitting} loadingText="Signing in">

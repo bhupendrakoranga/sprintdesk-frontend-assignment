@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { CloseIcon } from '../../../utils/icons'
 import Button from '../../../components/ui/Button'
 import InputField from '../../../components/ui/InputField'
 import Select from '../../../components/ui/Select'
@@ -89,9 +90,7 @@ export function TaskDrawer({ task, users, comments, onClose, onSave, onAddCommen
               <h2 id="task-drawer-title" className="mt-1 break-words text-lg font-semibold text-slate-900 dark:text-white">{task.title}</h2>
             </div>
             <button type="button" onClick={onClose} className="shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-2 focus-visible:outline-indigo-600 dark:hover:bg-slate-800" aria-label="Close task details">
-              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-              </svg>
+              <CloseIcon aria-hidden="true" className="h-5 w-5" />
             </button>
           </div>
         </div>
